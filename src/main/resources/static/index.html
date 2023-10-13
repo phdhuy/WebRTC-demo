@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot WebRTC Demo</title>
+</head>
+<body onbeforeunload="disconnect();">
+<div id="selectedVideosContainer">
+    <div>
+        <video id="selfView" autoplay muted playsinline></video>
+        <video id="remoteView" autoplay playsinline></video>
+    </div>
+    <button onclick="init()">Call</button>
+    <button onclick="turnOnMicrophone()">Turn On Microphone</button>
+    <button onclick="turnOffMicrophone()">Turn Off Microphone</button>
+    <button onclick='disconnect()'>Hang up</button>
+
+</div>
+
+<script src='/js/adapter-latest.js'></script>
+<script src='/js/main.js'></script>
+</body>
+</html>

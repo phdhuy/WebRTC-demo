@@ -4,16 +4,15 @@ import com.example.springwebrtcdemo.model.SignalMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Utils {
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+  private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    private Utils() {}
+  private Utils() {}
 
-    public static SignalMessage getObject(final String message) throws Exception {
-        return objectMapper.readValue(message, SignalMessage.class);
-    }
+  public static SignalMessage getObject(final String message) throws Exception {
+    return objectMapper.readValue(message, SignalMessage.class);
+  }
 
-    public static String getString(final SignalMessage message) throws Exception {
-        return objectMapper.writeValueAsString(message);
-    }
+  public static String getString(final SignalMessage message) throws Exception {
+    return objectMapper.writeValueAsString(message);
+  }
 }
-

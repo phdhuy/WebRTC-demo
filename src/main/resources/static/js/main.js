@@ -1,10 +1,10 @@
 const PORT = 8080;
-const MAPPING = "/call";
 const peerConnectionConfig = {
     'iceServers': [
         {'urls': 'stun:stun.l.google.com:19302'}
     ]
 };
+const MAPPING = "/call/123";
 
 var ws;
 var localStream;
@@ -18,9 +18,10 @@ function init() {
 
     navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function (stream) {
         console.log("Stream OK");
+        console.log(MAPPING);
         localStream = stream;
         selfView.srcObject = localStream;
-        ws = new WebSocket('ws://' + window.location.hostname + ':' + PORT + MAPPING);
+        ws = new WebSocket('ws://' + window.location.hostname + ':' + PORT + "/call/123");
         ws.onmessage = processWsMessage;
         ws.onopen = logMessage;
         ws.onclose = logMessage;

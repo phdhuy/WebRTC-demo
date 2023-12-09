@@ -88,10 +88,12 @@ public class SignalingSocketHandler extends TextWebSocketHandler {
         signalMessage.setSender(session.getId());
         String resendingMessage = Utils.getString(signalMessage);
         log.info("send message {} to {}", resendingMessage, destinationUser);
-        destinationSocket.sendMessage(new TextMessage(resendingMessage));
+        synchronized (destinationSocket) {
+          destinationSocket.sendMessage(new TextMessage(resendingMessage));
+        }
       }
     } catch (Exception e) {
-      log.warn("Error handle text message " + e.getMessage());
+      log.error("Error handle text message " + e.getMessage());
     }
   }
 
